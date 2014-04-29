@@ -2,22 +2,23 @@
 <html lang="en">
 <head>
   <!-- Import stylesheets. -->
-  <link type="text/css" rel="stylesheet" href="normalize.css"/>
+  <!-- <link type="text/css" rel="stylesheet" href="normalize.css"/> -->
   <!-- /Import stylesheets. -->
 
   <title>Simple Chat</title>
 </head>
 <body>
   <header><h1>Simple Chat</h1></header>
+  
+  <nav>
+    <%= link_to "About Us", :action => "about"%>
+  </nav>
 
   <article>
     <section>
       <h1>Say#hello</h1>
       <p>Find me in app/views/say/hello.html.erb</p>
       <p><%= @var %></p>
-    </section>
-    <section>
-      <%= link_to "About Us", :action => "about"%>
     </section>
   </article>
 

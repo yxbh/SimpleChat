@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   get 'home/about'
 
-  get 'say/index'
-
-  get 'say/about'
-
   get 'home/index'
 
   get 'say/hello'
