@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'chat/new'
+
+  get 'chat/join'
+
+  get 'chat/send'
+
+  get 'chat/leave'
+
   root 'home#index'
 
   get 'chat/channel'

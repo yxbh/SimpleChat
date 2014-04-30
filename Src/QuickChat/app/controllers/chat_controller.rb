@@ -1,7 +1,17 @@
 class ChatController < ApplicationController
-  def channel
+  # Create new channel.
+  def new
   end
 
-  def new
+  # Join an existing channel.
+  def join
+  end
+
+  # send message inside an existing channel.
+  def send
+  end
+
+  # leave am existing channel.
+  def leave
   end
 end
