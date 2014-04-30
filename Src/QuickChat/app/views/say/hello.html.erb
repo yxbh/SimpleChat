@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Import stylesheets. -->
-  <link type="text/css" rel="stylesheet" href="normalize.css"/>
+  <!-- <link type="text/css" rel="stylesheet" href="normalize.css"/> -->
   <!-- /Import stylesheets. -->
 
 </head>
@@ -10,5 +10,15 @@
     <h1>Say#hello</h1>
     <p>Find me in app/views/say/hello.html.erb</p>
     <p><%= @var %></p>
+    <h2>testing query string parameters:</h2>
+    <p>Did I pass in parameter: <%= @said_hi %></p>
+    <h2>prototype chat room related query string parameters</h2>
+    <%=
+    	if @has_room_id
+    		raw("<p>room_id was provided!</p>")
+    	else
+    		raw("<p>room_id was <em>not</em> provided!</p>")
+    	end
+	%>
 </body>
 </html>

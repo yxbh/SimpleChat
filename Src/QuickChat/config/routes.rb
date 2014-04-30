@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  get 'home/about'
+  root 'home#index'
 
+  get 'chat/channel'
+  get 'chat/new'
+
+  get 'home/about'
   get 'home/index'
 
   get 'say/hello'
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -59,4 +64,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+
