@@ -1,7 +1,10 @@
 <header><h1>Simple Chat</h1></header>
 
 <nav>
-  <%= link_to "About Us", :action => "about"%>
+  <ul>
+    <li><%= link_to "About Us", :action => "about" %></li>
+    <li><%= link_to "Demos", :controller => 'say', :action => "hello" %></li>
+  </ul>
 </nav>
 
 <article>

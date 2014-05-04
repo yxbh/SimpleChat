@@ -7,20 +7,21 @@
 <div class="container">
   <!-- DEMO: controller method variable exposed to erb. -->
   <h2>testing query string parameters:</h2>
-  <p>Did I pass in parameter: <%= @said_hi %></p>
+  <p>Did I pass in parameter 'said_hi': <%= @said_hi %></p>
 
   <!-- DEMO: Query string parameters. -->
   <h2>prototype chat room related query string parameters</h2>
   <%=
     if @has_room_id
-      raw("<p>room_id was provided!</p>")
+      raw("<p>'room_id' parameter was provided!</p>")
     else
-      raw("<p>room_id was <em>not</em> provided!</p>")
+      raw("<p>'room_id' parameter was <em>not</em> provided!</p>")
     end
   %>
 
   <!--  DEMO: Client button server respond.  -->
   <h2>Client button server respond demo</h2>
+  <p>(not working...)</p>
   <form id="chatform" action="#">
     <fieldset>
       <input id="msg-input" type="text"/>
@@ -35,11 +36,15 @@
     <%= submit_tag("Send", :class=>"btn") %>
   <% end %>
 
-  <div class="well">
-    <% @messages_copy.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </div>
+  <% if !@messages_copy.empty? %>
+    <div class="well">
+      <ul>
+        <% @messages_copy.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>
 
 
