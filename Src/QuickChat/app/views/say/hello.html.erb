@@ -10,8 +10,12 @@
     <h1>Say#hello</h1>
     <p>Find me in app/views/say/hello.html.erb</p>
     <p><%= @var %></p>
+    
+    <!-- DEMO: controller method variable exposed to erb. -->
     <h2>testing query string parameters:</h2>
     <p>Did I pass in parameter: <%= @said_hi %></p>
+    
+	<!-- DEMO: Query string parameters. -->
     <h2>prototype chat room related query string parameters</h2>
     <%=
     	if @has_room_id
@@ -20,5 +24,11 @@
     		raw("<p>room_id was <em>not</em> provided!</p>")
     	end
 	%>
+
+	<!--  DEMO: Client button server respond.  -->
+	<h2>Client button server respond demo</h2>
+	<input type="button" id="callHome" value="A button"/>
+
+
 </body>
 </html>
