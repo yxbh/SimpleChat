@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  get 'chat/new'
 
-  get 'chat/join'
-
-  get 'chat/send'
-
-  get 'chat/leave'
-
+  get 'chat/newChannel'
+  get 'chat/joinChannel'
+  get 'chat/sendMsg'
+  get 'chat/leaveChannel'
   root 'home#index'
+
+  get 'chat/new'
+  get 'chat/join'
+  get 'chat/send'
+  get 'chat/leave'
 
   get 'chat/channel'
   get 'chat/new'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   get 'say/hello'
+  post 'say/new_msg'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

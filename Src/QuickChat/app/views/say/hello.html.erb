@@ -1,34 +1,57 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-  <!-- Import stylesheets. -->
-  <!-- <link type="text/css" rel="stylesheet" href="normalize.css"/> -->
-  <!-- /Import stylesheets. -->
+<div class="container">
+  <h1>Say#hello</h1>
+  <p>Find me in app/views/say/hello.html.erb</p>
+  <p><%= @var %></p>
+</div>
 
-</head>
-<body>
-    <h1>Say#hello</h1>
-    <p>Find me in app/views/say/hello.html.erb</p>
-    <p><%= @var %></p>
-    
-    <!-- DEMO: controller method variable exposed to erb. -->
-    <h2>testing query string parameters:</h2>
-    <p>Did I pass in parameter: <%= @said_hi %></p>
-    
-	<!-- DEMO: Query string parameters. -->
-    <h2>prototype chat room related query string parameters</h2>
-    <%=
-    	if @has_room_id
-    		raw("<p>room_id was provided!</p>")
-    	else
-    		raw("<p>room_id was <em>not</em> provided!</p>")
-    	end
-	%>
+<div class="container">
+  <!-- DEMO: controller method variable exposed to erb. -->
+  <h2>testing query string parameters:</h2>
+  <p>Did I pass in parameter: <%= @said_hi %></p>
 
-	<!--  DEMO: Client button server respond.  -->
-	<h2>Client button server respond demo</h2>
-	<input type="button" id="callHome" value="A button"/>
+  <!-- DEMO: Query string parameters. -->
+  <h2>prototype chat room related query string parameters</h2>
+  <%=
+    if @has_room_id
+      raw("<p>room_id was provided!</p>")
+    else
+      raw("<p>room_id was <em>not</em> provided!</p>")
+    end
+  %>
+
+  <!--  DEMO: Client button server respond.  -->
+  <h2>Client button server respond demo</h2>
+  <form id="chatform" action="#">
+    <fieldset>
+      <input id="msg-input" type="text"/>
+      <input class="btn btn-normal" id="button" type="submit" value="A button"/>
+    </fieldset>
+  </form>
+
+  <!--  -->
+  <h2>Rails form</h2>
+  <%= form_tag("/say/new_msg", :method=>"post") do %>
+    <%= text_field_tag(:new_message) %>
+    <%= submit_tag("Send", :class=>"btn") %>
+  <% end %>
+
+  <div class="well">
+    <% @messages_copy.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </div>
+</div>
 
 
-</body>
-</html>
+<!-- JS logic -->
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    // form button clicked.
+    $("#button").click(function(){ // submit would just refresh the page.
+      console.log("Submit");
+    });
+
+  })
+  
+</script>
