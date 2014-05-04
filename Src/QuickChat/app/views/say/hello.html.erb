@@ -31,7 +31,7 @@
 
   <!--  -->
   <h2>Rails form</h2>
-  <%= form_tag("/say/new_msg", :method=>"post") do %>
+  <%= form_tag("/say/new_msg", :method=>"post", :remote=>"true", :id=>"message-form") do %>
     <%= text_field_tag(:new_message) %>
     <%= submit_tag("Send", :class=>"btn") %>
   <% end %>
@@ -56,6 +56,11 @@
     $("#button").click(function(){ // submit would just refresh the page.
       console.log("Submit");
     });
+
+    // handle message form
+    $("#message-form").bind('ajax:success', function(){
+      console.log("form submit success!");
+    })
 
   })
   
