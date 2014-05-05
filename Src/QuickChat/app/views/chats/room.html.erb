@@ -19,6 +19,7 @@ $(document).ready(function(){
   //######################################################################
   // Create a new client to connect to Faye
   var client = new Faye.Client('http://localhost:9292/faye');
+  //var client_id = client.getClientId();
 
   //// logic to figure out room id
   var room_id = <%= @room_id %>;
@@ -29,17 +30,26 @@ $(document).ready(function(){
 
   // Subscribe to the public channel
   var public_subscription
-  = client.subscribe(room_path, function(data) {
-    if (data.type === "text_message") {
-      $("#messages").append($(container).html(data.username + ": " + data.msg));
-    }
-    else if (data.type === "user_left") {
-      $("#messages").append($(container).html(data.username + ": (left the room)"));
-    }
-    else if (data.type === "user_join") {
-      $("#messages").append($(container).html(data.username + ": (entered the room)"));
-    }
-  });
+    = client.subscribe(room_path, function(data) {
+      if (data.type === "text_message") {
+        console.log("User said something.");
+        $("#messages").append($(container).html(data.username + ": " + data.msg));
+      }
+      else if (data.type === "user_left") {
+        console.log("User left.");
+        $("#messages").append($(container).html(data.username + ": (left the room)"));
+      }
+      else if (data.type === "user_join") {
+        console.log("User joined.");
+        $("#messages").append($(container).html(data.username + ": (entered the room)"));
+      }
+      else if (data.type === "user_subscribe") {
+        $("#messages").append($(container).html(data.client_id + ": (subscribed)"));
+      }
+      else if (data.type === "user_unsubscribe") {
+        $("#messages").append($(container).html(data.client_id + ": (unsubcribed)"));
+      }
+    });
 
   // Notify room participants user joined the room.
   client.publish(room_path, {
@@ -48,14 +58,16 @@ $(document).ready(function(){
   });
 
   //Notify room participants user leaving the room.
-  // $(window).beforeunload(function(){
-  //   alert();
-  //   client.publish(room_path, {
-  //     type:     "user_left",
-  //     username: "<%= @username %>"
-  //   });
-  //   return false;
-  // });
+  //  NOTE: this does not work at all because Faye seem to catch the message and disconnects first.
+  $(window).bind("beforeunload", function(){
+    console.log("beforeunload");
+    console.log("  before publish");
+    client.publish(room_path, {
+      type:     "user_left",
+      username: "<%= @username %>"
+    });
+    console.log("  after publish");
+  });
 
   // Handle form submissions and post messages to faye
   $('#chat-form').submit(function(){
