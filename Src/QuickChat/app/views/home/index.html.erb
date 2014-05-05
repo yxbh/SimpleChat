@@ -1,7 +1,6 @@
-<header><h1>Simple Chat</h1></header>
-
 <nav>
   <ul>
+    <li><%= link_to "Start Chatting", :controller => 'chats', :action => "create" %></li>
     <li><%= link_to "About Us", :action => "about" %></li>
     <li><%= link_to "Demos", :controller => 'say', :action => "hello" %></li>
   </ul>
@@ -18,5 +17,3 @@
     <p><%= @var %></p>
   </section>
 </article>
-
-<footer>Copyright 2014</footer>
