@@ -16,6 +16,10 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # JavaScript runtime
 gem 'therubyracer'
+# client
+gem 'thin'
+# faye for sockets
+gem 'faye'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
