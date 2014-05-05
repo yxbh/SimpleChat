@@ -38,7 +38,7 @@
 
   <% if !@messages_copy.empty? %>
     <div class="well">
-      <ul>
+      <ul id="message-list">
         <% @messages_copy.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
@@ -58,8 +58,12 @@
     });
 
     // handle message form
-    $("#message-form").bind('ajax:success', function(){
+    $("#message-form").bind('ajax:success', function(data, textStatus, jqXHR){
       console.log("form submit success!");
+      
+      console.log(data);
+      document.body.innerHTML = data;
+      //console.log(message_list);
     })
 
   })
