@@ -4,11 +4,15 @@
   <title>QuickChat</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'http://localhost:9292/faye.js' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<header class="">Simple Chat</header>
+
 <%= yield %>
 
+<footer class="">Copyright 2014</footer>
 </body>
 </html>

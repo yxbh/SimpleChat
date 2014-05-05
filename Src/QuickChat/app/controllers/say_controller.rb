@@ -40,6 +40,6 @@ class SayController < ApplicationController
 
 	def new_msg
 		@@messages.push(params["new_message"]);
-		redirect_to :action => 'hello';
+		#redirect_to :action => 'hello';
 	end
 end

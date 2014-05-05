@@ -19,19 +19,9 @@
     end
   %>
 
-  <!--  DEMO: Client button server respond.  -->
-  <h2>Client button server respond demo</h2>
-  <p>(not working...)</p>
-  <form id="chatform" action="#">
-    <fieldset>
-      <input id="msg-input" type="text"/>
-      <input class="btn btn-normal" id="button" type="submit" value="A button"/>
-    </fieldset>
-  </form>
-
   <!--  -->
   <h2>Rails form</h2>
-  <%= form_tag("/say/new_msg", :method=>"post", :remote=>"true", :id=>"message-form") do %>
+  <%= form_tag("/say/new_msg", :method=>"post", :remote=>"false", :id=>"message-form") do %>
     <%= text_field_tag(:new_message) %>
     <%= submit_tag("Send", :class=>"btn") %>
   <% end %>
@@ -45,8 +35,17 @@
       </ul>
     </div>
   <% end %>
+
+  <!-- Test faye socket form -->
+  <h2>Test Faye socket</h2>
+  <%= form_tag("new_msg", :id=>"chat-form") do %>
+    <%= text_field_tag(:message) %>
+    <%= submit_tag("Send", :class=>"btn", :id=>"send-msg") %>
+  <% end %>
+  <div id="messages" class="well"><div>
 </div>
 
+  
 
 <!-- JS logic -->
 <script type="text/javascript">
@@ -60,12 +59,37 @@
     // handle message form
     $("#message-form").bind('ajax:success', function(data, textStatus, jqXHR){
       console.log("form submit success!");
-      
-      console.log(data);
-      document.body.innerHTML = data;
-      //console.log(message_list);
     })
 
+    //######################################################################
+    // Create a new client to connect to Faye
+    var client = new Faye.Client('http://localhost:9292/faye');
+
+    //// logic to figure out room id
+    var room_id = "000000";
+    var room_path = "/messages/public/" + room_id;
+
+    // Subscribe to the public channel
+    var public_subscription
+      = client.subscribe(room_path, function(data) {
+        $('<p></p>').html(data.username + ": " + data.msg).appendTo('#messages');
+      });
+
+    // Handle form submissions and post messages to faye
+    $('#chat-form').submit(function(){
+      // Publish the message to the public channel
+      client.publish(room_path, {
+        username: '<%= session[:username] %>',
+        msg: $('#message').val()
+      });
+
+      // Clear the message box
+      $('#message').val('');
+
+      // Don't actually submit the form, otherwise the page will refresh.
+      return false;
+    });
+    //######################################################################
   })
   
 </script>

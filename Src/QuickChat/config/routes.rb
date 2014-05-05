@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'chats/room'
+
+  get 'chats/create'
+
   get 'chat/newChannel'
   get 'chat/joinChannel'
   get 'chat/sendMsg'

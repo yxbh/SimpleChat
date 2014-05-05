@@ -1,0 +1,78 @@
+
+<div class="container">
+  <h2>room: <%= @room_id %></h2>
+  <div id="messages" class="well">
+  </div>
+
+  <%= form_tag("new_msg", :id=>"chat-form") do %>
+    <%= text_field_tag(:message) %>
+    <%= submit_tag("Send", :class=>"btn", :id=>"send-msg") %>
+  <% end %>
+
+</div>
+
+
+<!-- JS logic -->
+<script type="text/javascript">
+$(document).ready(function(){
+
+  //######################################################################
+  // Create a new client to connect to Faye
+  var client = new Faye.Client('http://localhost:9292/faye');
+
+  //// logic to figure out room id
+  var room_id = <%= @room_id %>;
+  var room_path = "/messages/public/" + room_id;
+
+  // message container type
+  var container = "<p></p>";
+
+  // Subscribe to the public channel
+  var public_subscription
+  = client.subscribe(room_path, function(data) {
+    if (data.type === "text_message") {
+      $("#messages").append($(container).html(data.username + ": " + data.msg));
+    }
+    else if (data.type === "user_left") {
+      $("#messages").append($(container).html(data.username + ": (left the room)"));
+    }
+    else if (data.type === "user_join") {
+      $("#messages").append($(container).html(data.username + ": (entered the room)"));
+    }
+  });
+
+  // Notify room participants user joined the room.
+  client.publish(room_path, {
+    type:     "user_join",
+    username: "<%= @username %>"
+  });
+
+  //Notify room participants user leaving the room.
+  // $(window).beforeunload(function(){
+  //   alert();
+  //   client.publish(room_path, {
+  //     type:     "user_left",
+  //     username: "<%= @username %>"
+  //   });
+  //   return false;
+  // });
+
+  // Handle form submissions and post messages to faye
+  $('#chat-form').submit(function(){
+    // Publish the message to the public channel
+    client.publish(room_path, {
+      type:     "text_message",
+      username: "<%= @username %>",
+      msg:      $('#message').val()
+    });
+
+    // Clear the message box
+    $('#message').val('');
+
+    // Don't actually submit the form, otherwise the page will refresh.
+    return false;
+  });
+  //######################################################################
+})
+
+</script>
