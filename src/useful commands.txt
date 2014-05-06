@@ -1,0 +1,46 @@
+bundle exec guard	-	runs testing suite
+bundle exec rspec spec/	-	run tests
+bundle install		-	update gems
+rails server		-	runs server
+rails server --environment production
+			-	runs server in production mode
+bundle exec rake db:migrate RAILS_ENV=production
+			-	runs database in production mode (needed for above)
+
+=Add new Page=
+rails generate controller %controllerName% --no-test-framework
+
+=Add a new Model=
+rails generate model User name:string email:string
+bundle exec rake db:migrate
+bundle exec rake test:prepare			//This just ensures that the data model from the development database, db/development.sqlite3, is reflected in the test database, db/test.sqlite3.
+	bundle exec rake db:migrate RAILS_ENV=test
+
+=Add new column to database/model=
+rails generate migration add_password_digest_to_users password_digest:string
+edit db/migrate/%thing that was just created%
+bundle exec rake db:migrate
+
+=Add new Comtroller=
+rails generate controller Sessions --no-test-framework
+rails generate integration_test authentication_pages
+
+=Steps to add a new page=
+1. generate controller
+2. generate existence tests
+3. update routes.rb
+4. edit controller to use routes defined previously
+5. create .html.erb files in the directories defined previously
+6. generate content/actions tests
+7. generate relevant content
+8. update the controller (if needed)
+...repeat from 6.
+
+
+
+
+
+
+
+
+example@railstutorial.org
