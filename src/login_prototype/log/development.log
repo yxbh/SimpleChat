@@ -17028,3 +17028,269 @@ Started GET "/assets/users.js?body=1" for 123.3.255.70 at 2014-05-08 14:21:26 +0
 
 
 Started GET "/assets/application.js?body=1" for 123.3.255.70 at 2014-05-08 14:21:26 +0800
+
+
+Started GET "/" for 123.3.255.70 at 2014-05-08 15:19:16 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (38.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'c33a690882a6826953d05110df305bad55adf9a8' LIMIT 1
+  Rendered layouts/_header.html.erb (439.7ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 2158ms (Views: 2065.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/static_pages.css?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/sessions.css?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/users.css?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/application.css?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:22 +0800
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/bootstrap.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/sessions.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/static_pages.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/users.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:23 +0800
+
+
+Started GET "/assets/application.js?body=1" for 123.3.255.70 at 2014-05-08 15:19:24 +0800
+
+
+Started GET "/" for 123.3.255.70 at 2014-05-08 20:06:07 +0800
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+  Rendered layouts/_header.html.erb (4.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 623ms (Views: 620.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 115.64.218.106 at 2014-05-08 20:59:08 +0800
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mUser Load (5.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+  Rendered layouts/_header.html.erb (8.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 658ms (Views: 651.8ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 115.64.218.106 at 2014-05-08 20:59:10 +0800
+
+
+Started GET "/assets/sessions.css?body=1" for 115.64.218.106 at 2014-05-08 20:59:10 +0800
+
+
+Started GET "/assets/users.css?body=1" for 115.64.218.106 at 2014-05-08 20:59:10 +0800
+
+
+Started GET "/assets/static_pages.css?body=1" for 115.64.218.106 at 2014-05-08 20:59:10 +0800
+
+
+Started GET "/assets/application.css?body=1" for 115.64.218.106 at 2014-05-08 20:59:10 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:10 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:10 +0800
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:11 +0800
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:11 +0800
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:11 +0800
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:11 +0800
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:12 +0800
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:12 +0800
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:12 +0800
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:12 +0800
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:12 +0800
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:13 +0800
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:13 +0800
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:13 +0800
+
+
+Started GET "/assets/bootstrap.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:13 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:14 +0800
+
+
+Started GET "/assets/sessions.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:14 +0800
+
+
+Started GET "/assets/static_pages.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:14 +0800
+
+
+Started GET "/assets/users.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:14 +0800
+
+
+Started GET "/assets/application.js?body=1" for 115.64.218.106 at 2014-05-08 20:59:14 +0800
+
+
+Started GET "/about" for 115.64.218.106 at 2014-05-08 20:59:47 +0800
+Processing by StaticPagesController#about as HTML
+  Rendered static_pages/about.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+  Rendered layouts/_header.html.erb (9.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 619ms (Views: 611.8ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/contact" for 115.64.218.106 at 2014-05-08 20:59:58 +0800
+Processing by StaticPagesController#contact as HTML
+  Rendered static_pages/contact.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mUser Load (6.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1
+  Rendered layouts/_header.html.erb (11.0ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 679ms (Views: 670.8ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/signup" for 115.64.218.106 at 2014-05-08 21:00:04 +0800
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.erb (39.0ms)
+  Rendered users/new.html.erb within layouts/application (398.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[36mUser Load (16.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+  Rendered layouts/_header.html.erb (20.0ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 1057ms (Views: 1040.3ms | ActiveRecord: 16.0ms)
+
+
+Started POST "/users" for 115.64.218.106 at 2014-05-08 21:00:18 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k5urSFrT+yIEMKLXQUoLiLbiUhtoPqYReBxRCCBmbZ0=", "user"=>{"name"=>"ben", "email"=>"xyz", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mUser Exists (10.0ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('xyz') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  Rendered shared/_error_messages.html.erb (2.0ms)
+  Rendered users/new.html.erb within layouts/application (20.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'da39a3ee5e6b4b0d3255bfef95601890afd80709' LIMIT 1[0m
+  Rendered layouts/_header.html.erb (5.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 844ms (Views: 567.7ms | ActiveRecord: 12.0ms)
+
+
+Started POST "/users" for 115.64.218.106 at 2014-05-08 21:00:39 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k5urSFrT+yIEMKLXQUoLiLbiUhtoPqYReBxRCCBmbZ0=", "user"=>{"name"=>"ben", "email"=>"xyz@xyz.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (8.0ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('xyz@xyz.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (26.0ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2014-05-08 13:00:39.735092"], ["email", "xyz@xyz.com"], ["name", "ben"], ["password_digest", "$2a$10$gqIoRX5rUX/dtqtnLeYxu.VxzFs7/iBlEZvvD361KwZMGZ.4.0cJe"], ["remember_token", "04969fb4f70e7076070745aaeac96c057852b4f5"], ["updated_at", "2014-05-08 13:00:39.735092"]]
+  [1m[36m (121.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (5.0ms)[0m  [1mUPDATE "users" SET "remember_token" = ?, "updated_at" = ? WHERE "users"."id" = 4[0m  [["remember_token", "312221ed7c4b7a04f84c9f0bc262872fbc7350e3"], ["updated_at", "2014-05-08 13:00:39.924562"]]
+  [1m[35m (66.7ms)[0m  commit transaction
+Redirected to http://123.3.255.70/users/4
+Completed 302 Found in 350ms (ActiveRecord: 226.8ms)
+
+
+Started GET "/users/4" for 115.64.218.106 at 2014-05-08 21:00:40 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (7.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered users/show.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '312221ed7c4b7a04f84c9f0bc262872fbc7350e3' LIMIT 1
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 544ms (Views: 533.3ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/users/3" for 115.64.218.106 at 2014-05-08 21:00:55 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (8.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '312221ed7c4b7a04f84c9f0bc262872fbc7350e3' LIMIT 1
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 544ms (Views: 531.5ms | ActiveRecord: 9.0ms)
