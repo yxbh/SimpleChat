@@ -16,6 +16,10 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
+  <% if !signed_in? %>
+    alert("Need to login!");
+  <% end %>
+
   //######################################################################
   // Create a new client to connect to Faye
   var client = new Faye.Client('http://localhost:9292/faye');

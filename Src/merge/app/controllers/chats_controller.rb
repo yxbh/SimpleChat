@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
     # check for authenication 
     ## implementation
 
-    @username = "user";
+    @username = session[:remember_token];
 
     # check if room_id given
     if params.has_key?(:id)
