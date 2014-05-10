@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  extend SessionsHelper
+
   @@rooms
   @@cur_room_id = 0
 
@@ -6,7 +8,10 @@ class ChatsController < ApplicationController
     # check for authenication 
     ## implementation
 
-    @username = session[:remember_token];
+    @username = self.current_user
+    if @username.blank?
+      @username = "(!NA!)"
+    end
 
     # check if room_id given
     if params.has_key?(:id)
