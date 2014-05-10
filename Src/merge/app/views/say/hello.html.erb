@@ -1,0 +1,95 @@
+<div class="container">
+  <h1>Say#hello</h1>
+  <p>Find me in app/views/say/hello.html.erb</p>
+  <p><%= @var %></p>
+</div>
+
+<div class="container">
+  <!-- DEMO: controller method variable exposed to erb. -->
+  <h2>testing query string parameters:</h2>
+  <p>Did I pass in parameter 'said_hi': <%= @said_hi %></p>
+
+  <!-- DEMO: Query string parameters. -->
+  <h2>prototype chat room related query string parameters</h2>
+  <%=
+    if @has_room_id
+      raw("<p>'room_id' parameter was provided!</p>")
+    else
+      raw("<p>'room_id' parameter was <em>not</em> provided!</p>")
+    end
+  %>
+
+  <!--  -->
+  <h2>Rails form</h2>
+  <%= form_tag("/say/new_msg", :method=>"post", :remote=>"false", :id=>"message-form") do %>
+    <%= text_field_tag(:new_message) %>
+    <%= submit_tag("Send", :class=>"btn") %>
+  <% end %>
+
+  <% if !@messages_copy.empty? %>
+    <div class="well">
+      <ul id="message-list">
+        <% @messages_copy.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Test faye socket form -->
+  <h2>Test Faye socket</h2>
+  <%= form_tag("new_msg", :id=>"chat-form") do %>
+    <%= text_field_tag(:message) %>
+    <%= submit_tag("Send", :class=>"btn", :id=>"send-msg") %>
+  <% end %>
+  <div id="messages" class="well"><div>
+</div>
+
+  
+
+<!-- JS logic -->
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    // form button clicked.
+    $("#button").click(function(){ // submit would just refresh the page.
+      console.log("Submit");
+    });
+
+    // handle message form
+    $("#message-form").bind('ajax:success', function(data, textStatus, jqXHR){
+      console.log("form submit success!");
+    })
+
+    //######################################################################
+    // Create a new client to connect to Faye
+    var client = new Faye.Client('http://localhost:9292/faye');
+
+    //// logic to figure out room id
+    var room_id = "000000";
+    var room_path = "/messages/public/" + room_id;
+
+    // Subscribe to the public channel
+    var public_subscription
+      = client.subscribe(room_path, function(data) {
+        $('<p></p>').html(data.username + ": " + data.msg).appendTo('#messages');
+      });
+
+    // Handle form submissions and post messages to faye
+    $('#chat-form').submit(function(){
+      // Publish the message to the public channel
+      client.publish(room_path, {
+        username: '<%= session[:username] %>',
+        msg: $('#message').val()
+      });
+
+      // Clear the message box
+      $('#message').val('');
+
+      // Don't actually submit the form, otherwise the page will refresh.
+      return false;
+    });
+    //######################################################################
+  })
+  
+</script>
