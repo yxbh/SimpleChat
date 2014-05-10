@@ -19,9 +19,9 @@ bayeux.on(:publish) do |client_id, channel, data|
     # client_id maybe null
     id = ""
     if client_id.nil?
-        id = "client(NIL)"
+        id = "client(NIL)" # id is always NIL from what I've been seeing.
     else
-        ud = "client(" + client_id + ")"
+        id = "client(" + client_id + ")"
     end
 
     puts " " + id + " published some data in channel: " + channel + "."
