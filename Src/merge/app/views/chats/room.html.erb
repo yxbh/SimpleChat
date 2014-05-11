@@ -8,7 +8,13 @@
 </style>
 
 <div class="container">
-  <h2>room: <%= @room_id %></h2>
+  
+  <div id="url_invite_helper" class="row">
+    <div class="col-md-12">
+      <h2 id="url_invite_helper_text"></h2>
+    </div>
+  </div>
+
   <div class="well">
     <div id="messages" >
     </div>
@@ -25,6 +31,21 @@
 <!-- JS logic -->
 <script type="text/javascript">
 $(document).ready(function(){
+
+  //######################################################################
+  var helper_tag = "h2#url_invite_helper_text";
+  var helper_text = "To invite someone into the chat room, copy the URL at the top in your browser address bar and send it to them.";
+  $(helper_tag).text(helper_text);
+  $(helper_tag).mouseover(function(){
+    $(this).text("hide");
+  });
+  $(helper_tag).mouseout(function(){
+    $(this).text(helper_text);
+  });
+  $(helper_tag).click(function(){
+    $(this).hide();
+  });
+  //######################################################################
 
   //######################################################################
   // auto resize message output box. 
