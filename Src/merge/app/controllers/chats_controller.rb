@@ -13,20 +13,22 @@ class ChatsController < ApplicationController
     @username = self.current_user.name
 
     # check if room_id given
-    if params.has_key?(:id)
-        @room_id = params[:id]
+    if params.has_key?(:key)
+        @room_id = params[:key]
     else
         # create room
-        @@cur_room_id = @@cur_room_id + 1
-        @room_id = @@cur_room_id
+        # @@cur_room_id = @@cur_room_id + 1
+        # @room_id = @@cur_room_id
+
+        puts "no room key provided, redirecting to home page."
+        redirect_to root_path
     end
     
   end
 
   def create
-    # check for user authentication
-    ## implementation.
-    
-    redirect_to room;
+    @@cur_room_id = @@cur_room_id + 1
+
+    redirect_to room_path :key => @@cur_room_id
   end
 end
