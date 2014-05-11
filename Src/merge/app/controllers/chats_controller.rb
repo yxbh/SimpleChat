@@ -2,7 +2,6 @@ class ChatsController < ApplicationController
   extend SessionsHelper
   before_filter :login_required, :only => :room
 
-  @@rooms
   @@cur_room_id = 0
   
   def login_required
@@ -10,13 +9,8 @@ class ChatsController < ApplicationController
   end
 
   def room
-    # check for authentication 
-    ## implementation
-
+    # expose user name.
     @username = self.current_user.name
-    if @username.blank?
-      @username = "(!NA!)"
-    end
 
     # check if room_id given
     if params.has_key?(:id)
