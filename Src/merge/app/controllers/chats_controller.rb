@@ -1,8 +1,13 @@
 class ChatsController < ApplicationController
   extend SessionsHelper
+  before_filter :login_required, :only => :room
 
   @@rooms
   @@cur_room_id = 0
+  
+  def login_required
+    redirect_to root_path if self.current_user.blank?
+  end
 
   def room
     # check for authentication 
@@ -25,7 +30,7 @@ class ChatsController < ApplicationController
   end
 
   def create
-    # check for user authenication
+    # check for user authentication
     ## implementation.
     
     redirect_to room;
