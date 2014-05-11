@@ -8,7 +8,7 @@ class ChatsController < ApplicationController
     # check for authentication 
     ## implementation
 
-    @username = self.current_user
+    @username = self.current_user.name
     if @username.blank?
       @username = "(!NA!)"
     end
