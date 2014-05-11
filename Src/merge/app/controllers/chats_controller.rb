@@ -5,7 +5,7 @@ class ChatsController < ApplicationController
   @@cur_room_id = 0
 
   def room
-    # check for authenication 
+    # check for authentication 
     ## implementation
 
     @username = self.current_user
@@ -28,6 +28,6 @@ class ChatsController < ApplicationController
     # check for user authenication
     ## implementation.
     
-    redirect_to :action => 'room';
+    redirect_to room;
   end
 end
