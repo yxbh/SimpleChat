@@ -1,7 +1,17 @@
 
+<style type="text/css">
+
+#messages {
+  overflow-y:   auto;
+}
+
+</style>
+
 <div class="container">
   <h2>room: <%= @room_id %></h2>
-  <div id="messages" class="well">
+  <div class="well">
+    <div id="messages" >
+    </div>
   </div>
 
   <%= form_tag("new_msg", :id=>"chat-form") do %>
@@ -15,6 +25,16 @@
 <!-- JS logic -->
 <script type="text/javascript">
 $(document).ready(function(){
+
+  //######################################################################
+  // auto resize message output box. 
+  $("#messages").height($(window).height() * 0.5);
+  $(window).resize(function(){
+    var window_height = $(window).height();
+    $("#messages").height(window_height * 0.5);
+  });
+
+  //######################################################################
 
   //######################################################################
   // Create a new client to connect to Faye
@@ -80,6 +100,9 @@ $(document).ready(function(){
 
     // Clear the message box
     $('#message').val('');
+
+    // scroll to bottom.
+    $("#messages").scrollTop($("#messages").get(0).scrollHeight);
 
     // Don't actually submit the form, otherwise the page will refresh.
     return false;
