@@ -21,7 +21,7 @@ rails generate migration add_password_digest_to_users password_digest:string
 edit db/migrate/%thing that was just created%
 bundle exec rake db:migrate
 
-=Add new Comtroller=
+=Add new Controller=
 rails generate controller Sessions --no-test-framework
 rails generate integration_test authentication_pages
 

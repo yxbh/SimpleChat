@@ -178,3 +178,16 @@ input {
   @extend .control-group;
   @extend .error;
 }
+
+/*Definition lists*/
+dl dt {
+	float:left;
+	font-weight:bold;
+	margin-right:10px;
+	padding:5px; 
+}
+
+dl dd {
+	margin:2px 0;
+	padding:5px 0;
+}
