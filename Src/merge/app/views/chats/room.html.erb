@@ -68,24 +68,12 @@ $(document).ready(function(){
       }
       else if (data.type === "user_left") {
         console.log("User left.");
-        $("#messages").append($(container).html(data.username + ": (left the room)"));
+        $("#messages").append($(container).html("(" + data.username + ": left the room)"));
       }
       else if (data.type === "user_join") {
         console.log("User joined.");
-        $("#messages").append($(container).html(data.username + ": (entered the room)"));
+        $("#messages").append($(container).html("(" + data.username + ": entered the room)"));
       }
-	    else if (data.type === "user_subscribe") {
-        $("#messages").append($(container).html(data.client_id + " has entered the room"));
-      }
-      else if (data.type === "user_unsubscribe") {
-        $("#messages").append($(container).html(data.client_id + " has left the room"));
-      }
-     /* else if (data.type === "user_subscribe") {
-        $("#messages").append($(container).html(data.client_id + ": (subscribed)"));
-      }
-      else if (data.type === "user_unsubscribe") {
-        $("#messages").append($(container).html(data.client_id + ": (unsubcribed)"));
-      }*/
 
       scrollToBottom();
     });
