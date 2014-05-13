@@ -29,6 +29,11 @@
 
 <!-- JS logic -->
 <script type="text/javascript">
+var scrollToBottom = function(){
+  var message_pool = $("#messages");
+  message_pool.scrollTop(message_pool.get(0).scrollHeight);
+}
+
 $(document).ready(function(){
 
   //######################################################################
@@ -69,7 +74,7 @@ $(document).ready(function(){
         console.log("User joined.");
         $("#messages").append($(container).html(data.username + ": (entered the room)"));
       }
-	  else if (data.type === "user_subscribe") {
+	    else if (data.type === "user_subscribe") {
         $("#messages").append($(container).html(data.client_id + " has entered the room"));
       }
       else if (data.type === "user_unsubscribe") {
@@ -81,6 +86,8 @@ $(document).ready(function(){
       else if (data.type === "user_unsubscribe") {
         $("#messages").append($(container).html(data.client_id + ": (unsubcribed)"));
       }*/
+
+      scrollToBottom();
     });
 
   // Notify room participants user joined the room.
@@ -110,11 +117,9 @@ $(document).ready(function(){
       msg:      $('#message').val()
     });
 
-    // Clear the message box
-    $('#message').val('');
+    $('#message').val(''); // Clear the message box
 
-    // scroll to bottom.
-    $("#messages").scrollTop($("#messages").get(0).scrollHeight);
+    scrollToBottom();
 
     // Don't actually submit the form, otherwise the page will refresh.
     return false;
