@@ -1,10 +1,10 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
-  <div class="well well-lg">
+  <div class="well narrow">
     <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :name %>
+      <%= f.label :name, "Display Name" %>
       <%= f.text_field :name, class: "form-control" %>
 
       <%= f.label :email %>
@@ -15,7 +15,8 @@
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
-
-      <%= f.submit "Create my account", class: "btn btn-lg btn-primary" %>
+	  <div class="center">
+		<%= f.submit "Create my account", class: "btn btn-lg btn-primary" %>
+	  </div>
     <% end %>
   </div>

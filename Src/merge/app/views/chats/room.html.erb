@@ -9,20 +9,26 @@
 
 <div class="container">
   
+  <!--
   <div id="url_invite_helper" class="row">
     <div class="col-md-12">
       <h2 id="url_invite_helper_text"></h2>
     </div>
   </div>
+  -->
+    <div class="alert alert-info alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      To invite someone into the chat room, copy the URL at the top in your browser address bar and send it to them.
+    </div>
 
   <div class="well">
     <div id="messages" >
     </div>
   </div>
 
-  <%= form_tag("new_msg", :id=>"chat-form") do %>
+  <%= form_tag("new_msg", :id=>"chat-form", :class=>"form-vertical") do %>
     <%= text_field_tag(:message) %>
-    <%= submit_tag("Send", :class=>"btn", :id=>"send-msg") %>
+    <%= submit_tag("Send", :class=>"btn btn-default form-control", :id=>"send-msg") %>
   <% end %>
 
 </div>
@@ -33,7 +39,7 @@
 $(document).ready(function(){
 
   //######################################################################
-  var helper_tag = "h2#url_invite_helper_text";
+  /*var helper_tag = "h2#url_invite_helper_text";
   var helper_text = "To invite someone into the chat room, copy the URL at the top in your browser address bar and send it to them.";
   $(helper_tag).text(helper_text);
   $(helper_tag).mouseover(function(){
@@ -44,7 +50,7 @@ $(document).ready(function(){
   });
   $(helper_tag).click(function(){
     $(this).hide();
-  });
+  });*/
   //######################################################################
 
   //######################################################################
@@ -84,12 +90,18 @@ $(document).ready(function(){
         console.log("User joined.");
         $("#messages").append($(container).html(data.username + ": (entered the room)"));
       }
-      else if (data.type === "user_subscribe") {
+	  else if (data.type === "user_subscribe") {
+        $("#messages").append($(container).html(data.client_id + " has entered the room"));
+      }
+      else if (data.type === "user_unsubscribe") {
+        $("#messages").append($(container).html(data.client_id + " has left the room"));
+      }
+     /* else if (data.type === "user_subscribe") {
         $("#messages").append($(container).html(data.client_id + ": (subscribed)"));
       }
       else if (data.type === "user_unsubscribe") {
         $("#messages").append($(container).html(data.client_id + ": (unsubcribed)"));
-      }
+      }*/
     });
 
   // Notify room participants user joined the room.

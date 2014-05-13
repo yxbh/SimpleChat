@@ -45,3 +45,4 @@ pickle-email-*.html
 # .secret
 
 *.log
+Src/merge/app/assets/images/Thumbs.db

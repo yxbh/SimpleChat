@@ -1,17 +1,8 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+
+<div class="center jumbotron">
+  <h1>Welcome <%= @user.name %></h1>
+  
+  <%= link_to "Click here to start a new room", create_path, class: "btn btn-lg btn-primary" %>
+
 </div>
-
-<p>
-    I guess this is where you could enter the address of the chat room you wish to go to...?
-</p>
-
-<%= link_to "Start Chatting", create_path, class: "btn btn-lg btn-primary" %>
