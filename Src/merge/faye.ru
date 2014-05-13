@@ -32,10 +32,10 @@ bayeux.on(:subscribe) do |client_id, channel|
     puts " " + client_id + " subscribed to channel: " + channel + "."
 
     # broadcast subscription
-    bayeux.get_client.publish(channel, {
-        'type' => 'user_subscribe',
-        'client_id' => client_id
-    })
+    #bayeux.get_client.publish(channel, {
+    #    'type' => 'user_subscribe',
+    #    'client_id' => client_id
+    #})
 end
 
 # report un-subscription
@@ -43,10 +43,10 @@ bayeux.on(:unsubscribe) do |client_id, channel|
     puts " " + client_id + " un-subscribed from channel: " + channel + "."
     
     # broadcast unsubscription
-    bayeux.get_client.publish(channel, {
-        'type' => 'user_unsubscribe',
-        'client_id' => client_id
-    })
+    #bayeux.get_client.publish(channel, {
+    #    'type' => 'user_unsubscribe',
+    #    'client_id' => client_id
+    #})
 end
 
 run bayeux
