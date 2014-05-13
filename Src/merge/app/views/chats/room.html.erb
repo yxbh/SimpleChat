@@ -1,4 +1,4 @@
-
+<% provide(:title, 'Room '+@room_id) %>
 <style type="text/css">
 
 #messages {
@@ -37,7 +37,7 @@ $(document).ready(function(){
   var helper_text = "To invite someone into the chat room, copy the URL at the top in your browser address bar and send it to them.";
   $(helper_tag).text(helper_text);
   $(helper_tag).mouseover(function(){
-    $(this).text("hide");
+    $(this).text("click to hide");
   });
   $(helper_tag).mouseout(function(){
     $(this).text(helper_text);
