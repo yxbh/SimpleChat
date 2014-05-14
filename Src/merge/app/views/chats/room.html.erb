@@ -101,7 +101,15 @@ $(document).ready(function(){
   // Create a new client to connect to Faye
   var client = new Faye.Client('http://localhost:9292/faye');
   client.disable("autodisconnect");
-  //var client_id = client.getClientId();
+
+  client.on("transport:on", function() {
+    console.log("online");
+    $("#messages").append($(container).html("The client is online."));
+  });
+  client.on("transport:down", function() {
+    console.log("offline");
+    $("#messages").append($(container).html("The client is offline. Try refreshing or openning a new window."));
+  });
 
   //// logic to figure out room id
   var room_id = <%= @room_id %>;
@@ -144,6 +152,12 @@ $(document).ready(function(){
 
       scrollToBottom("#messages");
     });
+
+  // on connection
+  public_subscription.then(function() {
+    console.log("Chat room connected!");
+    $("#messages").append($(container).html("Connected to chat room."));
+  });
 
   // Notify room participants user joined the room.
   client.publish(room_path, {
