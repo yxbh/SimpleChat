@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
+  include SessionsHelper
 
   def show
-    @user = User.find(params[:id])
+    if !self.signed_in?
+      redirect_to root_path
+    end
+
+    @user = self.current_user
+    #@user = User.find(params[:id])
   end
 
   def new
