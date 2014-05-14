@@ -46,16 +46,47 @@
 //
 // Scroll to the bottom of the container.
 //
-var scrollToBottom = function(container){
+var scrollToBottom = function(container) {
   var message_pool = $(container);
   message_pool.scrollTop(message_pool.get(0).scrollHeight);
-}
+};
+
+// participant list
+var participants = [];
+
+var addParticipant = function(participant) {
+  console.log(participant);
+  if (participants.indexOf(participant) === -1)
+  {
+    participants.push(participant);
+    participants.sort();
+  }
+};
+
+var removeParticipant = function(participant) {
+  var new_list = [""];
+  for (p in participants)
+  {
+    if (participants[p] !== participant)
+      new_list.push(participants[p]);
+  }
+  new_list.sort();
+  participants = new_list;
+};
+
+var refreshParticipantList = function() {
+  $("#participant_list").empty();
+  for (p in participants)
+  {
+    $("#participant_list").append($("<p></p>").html(participants[p]));
+  }
+};
 
 $(document).ready(function(){
 
   //######################################################################
   // auto resize message output box. 
-  var size_ratio2 = 0.465;
+  var size_ratio2 = 0.45;
   $("#messages").height($(window).height() * 0.5);
   $("#participant_list").height($(window).height() * size_ratio2);
   $(window).resize(function(){
@@ -77,23 +108,38 @@ $(document).ready(function(){
   var room_path = "/messages/public/" + room_id;
 
   // message container type
-  var container = "<p></p>";
+  var container = "<p style=\"color: grey;\"></p>";
 
   // Subscribe to the public channel
   var public_subscription
     = client.subscribe(room_path, function(data) {
       if (data.type === "text_message") {
         console.log("User said something.");
-        $("#messages").append($(container).html(data.username + ": " + data.msg));
+
+        var name_node = $("<span style=\"color: green;\"></span>");
+        name_node.html(data.username);
+        var msg_node  = $("<span style=\"color: black;\"></span>");
+        msg_node.html(data.msg);
+
+        var entry_node = $(container);
+        entry_node.append(name_node);
+        entry_node.append(" : ");
+        entry_node.append(msg_node);
+
+        $("#messages").append(entry_node);
+        addParticipant(data.username);
       }
       else if (data.type === "user_left") {
         console.log("User left.");
         $("#messages").append($(container).html("(" + data.username + ": left the room)"));
+        removeParticipant(data.username);
       }
       else if (data.type === "user_join") {
         console.log("User joined.");
         $("#messages").append($(container).html("(" + data.username + ": entered the room)"));
+        addParticipant(data.username);
       }
+      refreshParticipantList();
 
       scrollToBottom("#messages");
     });
