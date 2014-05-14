@@ -77,9 +77,7 @@ var removeParticipant = function(participant) {
 var refreshParticipantList = function() {
   $("#participant_list").empty();
   for (p in participants)
-  {
     $("#participant_list").append($("<p></p>").html(participants[p]));
-  }
 };
 
 $(document).ready(function(){
@@ -102,13 +100,15 @@ $(document).ready(function(){
   var client = new Faye.Client('http://localhost:9292/faye');
   client.disable("autodisconnect");
 
-  client.on("transport:on", function() {
+  client.on("transport:up", function() {
     console.log("online");
     $("#messages").append($(container).html("The client is online."));
+    scrollToBottom("#messages");
   });
   client.on("transport:down", function() {
     console.log("offline");
     $("#messages").append($(container).html("The client is offline. Try refreshing or openning a new window."));
+    scrollToBottom("#messages");
   });
 
   //// logic to figure out room id
@@ -157,6 +157,7 @@ $(document).ready(function(){
   public_subscription.then(function() {
     console.log("Chat room connected!");
     $("#messages").append($(container).html("Connected to chat room."));
+    scrollToBottom("#messages");
   });
 
   // Notify room participants user joined the room.
