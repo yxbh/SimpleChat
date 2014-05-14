@@ -26,8 +26,8 @@
     </div>
   </div>
 
-  <%= form_tag("new_msg", :id=>"chat-form", :class=>"form-vertical") do %>
-    <%= text_field_tag(:message) %>
+  <%= form_tag("new_msg", :id=>"chat-form", :class=>"form-horizontal") do %>
+    <%= text_field_tag(:message, nil, :class =>"form-control") %>
     <%= submit_tag("Send", :class=>"btn btn-default form-control", :id=>"send-msg") %>
   <% end %>
 
