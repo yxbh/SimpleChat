@@ -8,6 +8,15 @@
   overflow-y:   auto;
 }
 
+.panel.col-md-4 {
+	padding-right:0pc;
+	padding-left:0px;
+}
+
+.row {	/*needed to correctly center row*/
+	margin-left:auto;
+}
+
 </style>
 
 <div class="container-fluid">
@@ -18,12 +27,21 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <!--<div class="col-md-4">
       <h4>Participant</h4>
       <div class="well">
         <div id="participant_list" ></div>
       </div>
-    </div>
+    </div>-->
+	<div class="panel panel-default col-md-4">
+	  <div class="panel-heading">
+	    <h4 class="panel-title">Participants</h4>
+	  </div>
+      <div class="panel-body">
+	    <div id="participant_list" ></div>
+      </div>
+	</div>
+	
     <div class="col-md-8">
       <div class="well">
         <div id="messages" ></div>
@@ -32,7 +50,7 @@
   </div>
   
 
-  <%= form_tag("new_msg", :id=>"chat-form", :class=>"form-horizontal") do %>
+  <%= form_tag("new_msg", :id=>"chat-form", :class=>"form-horizontal", :autocomplete=>"off") do %>
     <%= text_field_tag(:message, nil, :class =>"form-control") %>
     <%= submit_tag("Send", :class=>"btn btn-default form-control", :id=>"send-msg") %>
   <% end %>
@@ -84,7 +102,7 @@ $(document).ready(function(){
 
   //######################################################################
   // auto resize message output box. 
-  var size_ratio2 = 0.45;
+  var size_ratio2 = 0.47;
   $("#messages").height($(window).height() * 0.5);
   $("#participant_list").height($(window).height() * size_ratio2);
   $(window).resize(function(){
