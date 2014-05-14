@@ -66,6 +66,7 @@ $(document).ready(function(){
   //######################################################################
   // Create a new client to connect to Faye
   var client = new Faye.Client('http://localhost:9292/faye');
+  client.disable("autodisconnect");
   //var client_id = client.getClientId();
 
   //// logic to figure out room id
@@ -113,14 +114,14 @@ $(document).ready(function(){
   //Notify room participants user leaving the room.
   //  NOTE: this does not work at all because Faye seem to catch the message and disconnects first.
   $(window).bind("beforeunload", function(){
-    console.log("beforeunload");
-    console.log("  before publish");
     client.publish(room_path, {
       type:     "user_left",
       username: "<%= @username %>"
     });
-    console.log("  after publish");
   });
+  $(window).bind("unload", function(){
+    client.disconnect();
+  });  
 
   // Handle form submissions and post messages to faye
   $('#chat-form').submit(function(){
