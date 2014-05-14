@@ -1,23 +1,36 @@
 <% provide(:title, 'Room '+@room_id) %>
 <style type="text/css">
 
+#participant_list {
+  overflow-y:   auto;
+}
 #messages {
   overflow-y:   auto;
 }
 
 </style>
 
-<div class="container">
+<div class="container-fluid">
 
   <div class="alert alert-info alert-dismissable">
 	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     To invite someone into the chat room, copy the URL at the top in your browser address bar and send it to them.
   </div>
 
-  <div class="well">
-    <div id="messages" >
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Participant</h4>
+      <div class="well">
+        <div id="participant_list" ></div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="well">
+        <div id="messages" ></div>
+      </div>
     </div>
   </div>
+  
 
   <%= form_tag("new_msg", :id=>"chat-form", :class=>"form-horizontal") do %>
     <%= text_field_tag(:message, nil, :class =>"form-control") %>
@@ -29,8 +42,12 @@
 
 <!-- JS logic -->
 <script type="text/javascript">
-var scrollToBottom = function(){
-  var message_pool = $("#messages");
+
+//
+// Scroll to the bottom of the container.
+//
+var scrollToBottom = function(container){
+  var message_pool = $(container);
   message_pool.scrollTop(message_pool.get(0).scrollHeight);
 }
 
@@ -38,10 +55,13 @@ $(document).ready(function(){
 
   //######################################################################
   // auto resize message output box. 
+  var size_ratio2 = 0.465;
   $("#messages").height($(window).height() * 0.5);
+  $("#participant_list").height($(window).height() * size_ratio2);
   $(window).resize(function(){
     var window_height = $(window).height();
     $("#messages").height(window_height * 0.5);
+    $("#participant_list").height(window_height * size_ratio2);
   });
 
   //######################################################################
@@ -75,7 +95,7 @@ $(document).ready(function(){
         $("#messages").append($(container).html("(" + data.username + ": entered the room)"));
       }
 
-      scrollToBottom();
+      scrollToBottom("#messages");
     });
 
   // Notify room participants user joined the room.
@@ -107,7 +127,7 @@ $(document).ready(function(){
 
     $('#message').val(''); // Clear the message box
 
-    scrollToBottom();
+    scrollToBottom("#messages");
 
     // Don't actually submit the form, otherwise the page will refresh.
     return false;
