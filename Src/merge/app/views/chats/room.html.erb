@@ -127,6 +127,7 @@ $(document).ready(function(){
         entry_node.append(msg_node);
 
         $("#messages").append(entry_node);
+
         addParticipant(data.username);
       }
       else if (data.type === "user_left") {
@@ -163,15 +164,15 @@ $(document).ready(function(){
   });  
 
   // Handle form submissions and post messages to faye
-  $('#chat-form').submit(function(){
+  $("#chat-form").submit(function(){
     // Publish the message to the public channel
     client.publish(room_path, {
       type:     "text_message",
       username: "<%= @username %>",
-      msg:      $('#message').val()
+      msg:      $("#message").val()
     });
 
-    $('#message').val(''); // Clear the message box
+    $("#message").val(""); // Clear the message box
 
     scrollToBottom("#messages");
 
