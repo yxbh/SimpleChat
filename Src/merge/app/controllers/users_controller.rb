@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include SessionsHelper
+  #include SessionsHelper
 
   def show
     if !self.signed_in?
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Simple Chat!"
-      redirect_to @user
+      redirect_to user_path
     else
       render 'new'
     end

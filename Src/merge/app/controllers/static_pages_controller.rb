@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   before_filter :go_to_home, :only => :home
   
   def go_to_home
-    redirect_to self.current_user unless self.current_user.blank?
+    redirect_to user_path unless self.current_user.blank?
   end
 
   
