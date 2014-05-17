@@ -1,0 +1,11 @@
+<h1>Upload#index</h1>
+<p>Find me in app/views/upload/index.html.erb</p>
+
+<h1>File Upload</h1>
+<%= form_tag({:action => 'upload'}, :multipart => true) do %>
+  <p>
+    <label for="upload_file">Select File</label> : 
+    <%= file_field 'upload', 'datafile' %>
+  </p>
+  <%= submit_tag "Upload" %>
+<% end %>

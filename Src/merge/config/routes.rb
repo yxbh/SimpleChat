@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'upload/index'
+  post 'upload/upload'
+
   resources :users, only: [:new, :create, :edit]
   resources :sessions, only: [:new, :create, :destroy]
 
