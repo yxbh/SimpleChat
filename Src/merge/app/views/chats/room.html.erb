@@ -113,11 +113,18 @@ $(document).ready(function(){
   //######################################################################
 
   //######################################################################
+  //// logic to figure out room id
+  var room_id = <%= @room_id %>;
+  var room_path = "/messages/public/" + room_id;
+
+  // message container type
+  var container = "<p style=\"color: grey;\"></p>";
+    
   // Create a new client to connect to Faye
   var client // declare the client variable first.
-  var host = "http://" + location.host.split(":")[0];
 
   // load the Faye JS and initiate the client. 
+  var host = "http://" + location.host.split(":")[0];
   $.getScript(host + ":9292/faye.js")
   .done(function( script, textStatus ) {
     console.log("load Faye JS success");
@@ -134,13 +141,6 @@ $(document).ready(function(){
       $("#messages").append($(container).html("The client is offline. Try refreshing or openning a new window."));
       scrollToBottom("#messages");
     });
-
-    //// logic to figure out room id
-    var room_id = <%= @room_id %>;
-    var room_path = "/messages/public/" + room_id;
-
-    // message container type
-    var container = "<p style=\"color: grey;\"></p>";
 
     // Subscribe to the public channel
     var public_subscription
