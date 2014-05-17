@@ -98,6 +98,12 @@ var refreshParticipantList = function() {
     $("#participant_list").append($("<p></p>").html(participants[p]));
 };
 
+// logic to figure out room id
+var room_id = <%= @room_id %>;
+var room_path = "/messages/public/" + room_id;
+// message container type
+var container = "<p style=\"color: grey;\"></p>";
+
 $(document).ready(function(){
   //######################################################################
   // auto resize message output box. 
@@ -113,13 +119,6 @@ $(document).ready(function(){
   //######################################################################
 
   //######################################################################
-  //// logic to figure out room id
-  var room_id = <%= @room_id %>;
-  var room_path = "/messages/public/" + room_id;
-
-  // message container type
-  var container = "<p style=\"color: grey;\"></p>";
-    
   // Create a new client to connect to Faye
   var client // declare the client variable first.
 
