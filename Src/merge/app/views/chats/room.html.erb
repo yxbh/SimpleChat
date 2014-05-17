@@ -99,7 +99,6 @@ var refreshParticipantList = function() {
 };
 
 $(document).ready(function(){
-
   //######################################################################
   // auto resize message output box. 
   var size_ratio2 = 0.47;
@@ -115,29 +114,36 @@ $(document).ready(function(){
 
   //######################################################################
   // Create a new client to connect to Faye
-  var client = new Faye.Client('http://localhost:9292/faye');
-  client.disable("autodisconnect");
+  var client // declare the client variable first.
+  var host = "http://" + location.host.split(":")[0];
 
-  client.on("transport:up", function() {
-    console.log("online");
-    $("#messages").append($(container).html("The client is online."));
-    scrollToBottom("#messages");
-  });
-  client.on("transport:down", function() {
-    console.log("offline");
-    $("#messages").append($(container).html("The client is offline. Try refreshing or openning a new window."));
-    scrollToBottom("#messages");
-  });
+  // load the Faye JS and initiate the client. 
+  $.getScript(host + ":9292/faye.js")
+  .done(function( script, textStatus ) {
+    console.log("load Faye JS success");
+    client = new Faye.Client(host + ":9292/faye");
+    client.disable("autodisconnect");
 
-  //// logic to figure out room id
-  var room_id = <%= @room_id %>;
-  var room_path = "/messages/public/" + room_id;
+    client.on("transport:up", function() {
+      console.log("online");
+      $("#messages").append($(container).html("The client is online."));
+      scrollToBottom("#messages");
+    });
+    client.on("transport:down", function() {
+      console.log("offline");
+      $("#messages").append($(container).html("The client is offline. Try refreshing or openning a new window."));
+      scrollToBottom("#messages");
+    });
 
-  // message container type
-  var container = "<p style=\"color: grey;\"></p>";
+    //// logic to figure out room id
+    var room_id = <%= @room_id %>;
+    var room_path = "/messages/public/" + room_id;
 
-  // Subscribe to the public channel
-  var public_subscription
+    // message container type
+    var container = "<p style=\"color: grey;\"></p>";
+
+    // Subscribe to the public channel
+    var public_subscription
     = client.subscribe(room_path, function(data) {
       if (data.type === "text_message") {
         console.log("User said something.");
@@ -171,17 +177,21 @@ $(document).ready(function(){
       scrollToBottom("#messages");
     });
 
-  // on connection
-  public_subscription.then(function() {
-    console.log("Chat room connected!");
-    $("#messages").append($(container).html("Connected to chat room."));
-    scrollToBottom("#messages");
-  });
+    // on connection
+    public_subscription.then(function() {
+      console.log("Chat room connected!");
+      $("#messages").append($(container).html("Connected to chat room."));
+      scrollToBottom("#messages");
+    });
 
-  // Notify room participants user joined the room.
-  client.publish(room_path, {
-    type:     "user_join",
-    username: "<%= @username %>"
+    // Notify room participants user joined the room.
+    client.publish(room_path, {
+      type:     "user_join",
+      username: "<%= @username %>"
+    });
+  })
+  .fail(function( jqxhr, settings, exception ) {
+    console.log("load JS fail");
   });
 
   //Notify room participants user leaving the room.
