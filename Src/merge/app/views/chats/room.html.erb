@@ -219,11 +219,11 @@ $(document).ready(function(){
   //######################################################################
   $("#upload-form").submit(function() {
     console.log("Submiting form...");
-    var dataToSubmit = new FormData($(this)); //$(this).serialize();
+    var dataToSubmit = new FormData(this);//new FormData($(this)); //$(this).serialize();
     $.ajax({
       url:          $(this).attr('action'),
       data:         dataToSubmit,
-      //dataType: "JSON",
+      //dataType:     "json", // can't be json.
       type:         'POST',
       contentType:  false,
       processData:  false,
