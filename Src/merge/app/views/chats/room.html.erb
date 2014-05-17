@@ -48,6 +48,13 @@
     <%= submit_tag("Send", :class=>"btn btn-default form-control", :id=>"send-msg") %>
   <% end %>
 
+  <h1>File Upload</h1>
+  <%= form_tag({:controller => "upload", :action => "upload"}, :id=>"upload-form", :multipart => true) do %>
+    <label for="upload_file">Select File</label> : 
+    <%= file_field 'upload', 'datafile', :id=>"file" %>
+    <%= submit_tag "Upload", :id=>"upload-file" %>
+  <% end %>
+
 </div>
 
 
@@ -206,6 +213,33 @@ $(document).ready(function(){
     return false;
   });
   //######################################################################
-})
+
+  //######################################################################
+  // File upload
+  //######################################################################
+  $("#upload-form").submit(function() {
+    console.log("Submiting form...");
+    var dataToSubmit = new FormData($(this)); //$(this).serialize();
+    $.ajax({
+      url:          $(this).attr('action'),
+      data:         dataToSubmit,
+      //dataType: "JSON",
+      type:         'POST',
+      contentType:  false,
+      processData:  false,
+      cache:        false
+    }).done(function(json){
+      console.log("Upload success!");
+      alert("Success!");
+    }).fail(function(){
+      console.log("upload failure!");
+      alert("Failure!");
+    });
+
+    return false;
+  });
+  //######################################################################
+
+});
 
 </script>
