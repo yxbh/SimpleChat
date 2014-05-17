@@ -14,7 +14,7 @@ In your terminal:
 > bundle exec rake db:migrate RAILS_ENV=test
 > rails s
 ```
-Goto localhost:3000 on your browser.
+Go to localhost:3000 on your browser.
 ###Run in development mode.
 In your terminal:
 ```
@@ -22,7 +22,7 @@ In your terminal:
 > bundle exec rake db:migrate RAILS_ENV=development
 > rails s --environment development
 ```
-Goto localhost:3000 on your browser.
+Go to localhost:3000 on your browser.
 ###Run in production mode.
 In your terminal:
 ```
@@ -30,7 +30,7 @@ In your terminal:
 > bundle exec rake db:migrate RAILS_ENV=production
 > rails s --environment production
 ```
-Goto localhost:3000 on your browser.
+Go to localhost:3000 on your browser.
 ###Exit server.
 At the terminal. Press Ctrl+C until all server process exits.
 ##Authors
