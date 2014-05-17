@@ -1,7 +1,0 @@
-## Setup
-> bundle install
-
-## Launch
-In separate terminals, do one of the following in each of the terminals.
-> rackup faye.ru -E production -s thin
-> rails s
