@@ -3,7 +3,4 @@ class UploadController < ApplicationController
     post = DataFile.save(params[:upload])
     render :text => "File has been uploaded successfully"
   end
-
-  def index
-  end
 end
