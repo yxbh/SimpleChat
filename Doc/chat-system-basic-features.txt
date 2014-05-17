@@ -1,4 +1,0 @@
- - create room
- - join room
- - send message
- - exit room
