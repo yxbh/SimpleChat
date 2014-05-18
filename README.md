@@ -5,30 +5,30 @@ Support user authentication, multiple chat rooms and file upload and sharing.
 ##Setup and Run
 Use git clone or download the zip file from the GitHub [repository](https://github.com/yxbh/Uni_2014S1_CITS3403_Projects).
 ```
-> git clone https://github.com/yxbh/Uni_2014S1_CITS3403_Projects.git
+git clone https://github.com/yxbh/Uni_2014S1_CITS3403_Projects.git
 ```
 ###Run in test mode.
 In your terminal:
 ```
-> bundle install
-> bundle exec rake db:migrate RAILS_ENV=test
-> rails s
+bundle install
+bundle exec rake db:migrate RAILS_ENV=test
+rails s
 ```
 Go to localhost:3000 on your browser.
 ###Run in development mode.
 In your terminal:
 ```
-> bundle install
-> bundle exec rake db:migrate RAILS_ENV=development
-> rails s --environment development
+bundle install
+bundle exec rake db:migrate RAILS_ENV=development
+rails s --environment development
 ```
 Go to localhost:3000 on your browser.
 ###Run in production mode.
 In your terminal:
 ```
-> bundle install
-> bundle exec rake db:migrate RAILS_ENV=production
-> rails s --environment production
+bundle install
+bundle exec rake db:migrate RAILS_ENV=production
+rails s --environment production
 ```
 Go to localhost:3000 on your browser.
 ###Exit server.
