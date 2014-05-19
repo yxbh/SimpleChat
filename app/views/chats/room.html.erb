@@ -7,6 +7,20 @@
 
 .row {  /*needed to correctly center row*/
   margin-left:  auto;
+  
+}
+
+#file.form-control, label.form-control {
+	vertical-align:top;
+	border:none;
+	padding-right:0px;
+	padding-left:0px;
+	padding-bottom:0px;
+	margin-left:0px;
+	margin-bottom:0px;
+	height:auto;
+	box-shadow:none;
+	width:50%;
 }
 </style>
 
@@ -39,11 +53,13 @@
     <%= submit_tag("Send", :class=>"btn btn-default form-control", :id=>"send-msg") %>
   <% end %>
 
-  <h1>File Upload</h1>
-  <%= form_tag({:controller => "upload", :action => "upload"}, :id=>"upload-form", :multipart => true) do %>
-    <label for="upload_file">Select File</label> : 
-    <%= file_field 'upload', 'datafile', :id=>"file" %>
-    <%= submit_tag "Upload", :id=>"upload-file" %>
+  
+  <%= form_tag({:controller => "upload", :action => "upload"}, :id=>"upload-form", :multipart => true, :class=>"form-inline") do %>
+    <div class="form-group">
+    <label for="upload_file" class="form-control">Upload File :</label>
+    <%= file_field 'upload', 'datafile', :id=>"file", :class=>"form-control" %>
+    <%= submit_tag "Upload", :id=>"upload-file", :class =>"btn btn-default form-control" %>
+	</div>
   <% end %>
 
 </div>
