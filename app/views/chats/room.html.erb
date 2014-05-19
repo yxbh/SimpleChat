@@ -69,9 +69,12 @@ var scrollToBottom = function(container) {
   message_pool.scrollTop(message_pool.get(0).scrollHeight);
 };
 
-// participant list
+// global participant list
 var participants = [];
 
+//
+// add an username to the global participant list.
+//
 var addParticipant = function(participant) {
   console.log(participant);
   if (participants.indexOf(participant) === -1)
@@ -81,6 +84,9 @@ var addParticipant = function(participant) {
   }
 };
 
+//
+// remove a username from the global participant list.
+//
 var removeParticipant = function(participant) {
   var new_list = [""];
   for (p in participants)
@@ -91,6 +97,46 @@ var removeParticipant = function(participant) {
   new_list.sort();
   participants = new_list;
 };
+
+//
+// check if a file extension is of an image type.
+//
+var isImageFileExtension = function(extension) {
+  switch (extension.toLowerCase()) {
+  case "jpg":
+  case "png":
+  case "gif":
+  case "bmp":
+    return true;
+  default:
+    return false;
+  }
+}
+
+//
+// check if a file extension is of an audio type.
+//
+var isAudioFileExtension = function(extension) {
+  switch (extension.toLowerCase()) {
+  case "mp3":
+  case "wav":
+    return true;
+  default:
+    return false;
+  }
+}
+
+//
+// check if a file extension is of an video type.
+//
+var isVideoFileExtension = function(extension) {
+  switch (extension.toLowerCase()) {
+  case "mp4":
+    return true;
+  default:
+    return false;
+  }
+}
 
 var refreshParticipantList = function() {
   $("#participant_list").empty();
@@ -171,6 +217,28 @@ $(document).ready(function(){
         $("#messages").append($(container).html("(" + data.username + ": entered the room)"));
         addParticipant(data.username);
       }
+      else if (data.type === "file_uploaded") {
+        console.log("User uploaded a file.");
+        
+        if (data.file_type === "img") {
+          console.log("uploaded file was an image.");
+          $("#messages").append($(container).html(data.msg));
+          var img_tag = $("<div><img src=\"" + data.link + "\" /></div>");
+          $("#messages").append(img_tag);
+        }
+        else if (data.file_type === "audio") {
+        }
+        else if (data.file_type === "video") {
+        }
+        else if (data.file_type === "other") {
+          console.log("file file file file....");
+          $("#messages").append($(container).html(data.msg));
+          var file_tag = $("<div><a href=\"" + data.link + "\">Download</a></div>");
+          $("#messages").append(file_tag);
+        }
+        
+      }      
+      
       refreshParticipantList();
 
       scrollToBottom("#messages");
@@ -226,9 +294,30 @@ $(document).ready(function(){
   //######################################################################
   // File upload
   //######################################################################
+  var filename  = "";
+  var file_ext  = "";
+  var file_type = "";
+  
+  $("input[type=file]").change(function() {
+    var path = $(this).val();
+    filename = path.split("/").pop().split("\\").pop();
+    file_ext = filename.split(".").pop();
+    console.log("file:    " + filename);
+    console.log("file ext:" + file_ext);
+    
+    if (isImageFileExtension(file_ext))
+      file_type = "img";
+    else if (isAudioFileExtension(file_ext))
+      file_type = "audio";
+    else if (isVideoFileExtension(file_ext))
+      file_type = "video";
+    else
+      file_type = "other";
+  });
+  
   $("#upload-form").submit(function() {
     console.log("Submiting form...");
-    var dataToSubmit = new FormData(this);//new FormData($(this)); //$(this).serialize();
+    var dataToSubmit = new FormData(this);
     $.ajax({
       url:          $(this).attr('action'),
       data:         dataToSubmit,
@@ -239,10 +328,23 @@ $(document).ready(function(){
       cache:        false
     }).done(function(json){
       console.log("Upload success!");
-      alert("Success!");
+      alert("Upload Success!");
+      
+      // construct the link.
+      file_link = host + ":3000/data/" + filename;
+      
+      // broadcast the link.
+      client.publish(room_path, {
+        type:      "file_uploaded",
+        file_type: file_type,
+        username:  "<%= @username %>",
+        msg:       "<%= @username %> uploaded a file.",
+        link:      file_link
+      });
+    
     }).fail(function(){
       console.log("upload failure!");
-      alert("Failure!");
+      alert("Upload Failure!");
     });
 
     return false;
