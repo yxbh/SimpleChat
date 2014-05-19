@@ -4,14 +4,15 @@ gem 'rails', '4.1.0'
 gem 'bootstrap-sass', '3.1.1.1'
 gem 'sprockets', '2.11.0'
 gem 'bcrypt-ruby', '3.1.5'
+gem 'sqlite3'
 
 group :development, :test do
-	gem 'sqlite3'
 	gem 'rspec-rails', '2.14.2'
 	gem 'guard-rspec'
 	gem 'spork-rails', '4.0.0'
 	gem 'guard-spork', '1.5.1'
 	gem 'childprocess', '0.5.3'
+	gem 'simplecov'
 end
 
 group :test do
