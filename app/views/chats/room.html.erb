@@ -120,6 +120,7 @@ var isAudioFileExtension = function(extension) {
   switch (extension.toLowerCase()) {
   case "mp3":
   case "wav":
+  case "ogg":
     return true;
   default:
     return false;
@@ -219,14 +220,20 @@ $(document).ready(function(){
       }
       else if (data.type === "file_uploaded") {
         console.log("User uploaded a file.");
+        $("#messages").append($(container).html(data.msg));
         
         if (data.file_type === "img") {
           console.log("uploaded file was an image.");
-          $("#messages").append($(container).html(data.msg));
           var img_tag = $("<div><img src=\"" + data.link + "\" /></div>");
           $("#messages").append(img_tag);
         }
         else if (data.file_type === "audio") {
+          console.log("uploaded file was an audio.");
+          ext        = data.link.split(".").pop();
+          mime_type  = "type=\"" + "audio/" + ext + "\"";   // type="audio/<extension>"
+          src_link   = "src=\"" + data.link + "\"";         // src="<URL-to-audio>"
+          var aud_tag = $("<div><audio controls><source " + src_link + " " + mime_type + "/></audio></div>");
+          $("#messages").append(aud_tag);
         }
         else if (data.file_type === "video") {
         }
