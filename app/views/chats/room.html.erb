@@ -227,37 +227,39 @@ $(document).ready(function(){
       }
       else if (data.type === "file_uploaded") {
         console.log("User uploaded a file.");
+        
+        // provide download link.
         var file_tag = $("<div><a href=\"" + data.link + "\">Download</a></div>");
         $("#messages").append($(container).html(data.msg).append(file_tag));
         
+        // common parameters.
+        var ext       = data.link.split(".").pop();
+        var width     = "width=\"" + $("#messages").innerWidth().toString() + "\"";
+        var height    = "height=\"" + $("#messages").innerHeight().toString() + "\"";
+        var src_link  = "src=\"" + data.link + "\"";
+        var mmedia_tag;
+          
         if (data.file_type === "img") {
           console.log("uploaded file was an image.");
-          var img_tag = $("<div><img src=\"" + data.link + "\" /></div>");
-          $("#messages").append(img_tag);
+          mmedia_tag = $("<div><img " + src_link + " /></div>");
         }
         else if (data.file_type === "audio") {
           console.log("uploaded file was an audio.");
-          var ext        = data.link.split(".").pop();
-          var mime_type  = "type=\"" + "audio/" + ext + "\"";   // type="audio/<extension>"
-          var src_link   = "src=\"" + data.link + "\"";         // src="<URL-to-audio>"
-          var aud_tag = $("<div><audio controls><source " + src_link + " " + mime_type + "/></audio></div>");
-          $("#messages").append(aud_tag);
+          var mime_type  = "type=\"audio/" + ext + "\"";   // type="audio/<extension>"
+          mmedia_tag = $("<div><audio controls><source " + src_link + " " + mime_type + "/></audio></div>");
         }
         else if (data.file_type === "video") {
           console.log("uploaded file was a video.");
-          var ext        = data.link.split(".").pop();
-          var mime_type  = "type=\"" + "video/" + ext + "\"";   // type="video/<extension>"
-          var src_link   = "src=\"" + data.link + "\"";         // src="<URL-to-video>"
-          var width      = "width=\"" + $("#messages").innerWidth().toString() + "\"";
-          var height     = "height=\"" + $("#messages").innerHeight().toString() + "\"";
-          var vid_tag = $(
+          var mime_type  = "type=\"video/" + ext + "\"";   // type="video/<extension>"
+          mmedia_tag = $(
             "<div><video " + width + " " + height + " controls><source "
             + src_link + " " + mime_type + "/>Unsupported video format.</video></div>");
-          $("#messages").append(vid_tag);
         }
         else if (data.file_type === "other") {
           console.log("uploaded file of type 'other'");
         }
+        
+        $("#messages").append(mmedia_tag);
       }      
       
       refreshParticipantList();
