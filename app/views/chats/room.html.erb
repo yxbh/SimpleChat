@@ -241,7 +241,7 @@ $(document).ready(function(){
           
         if (data.file_type === "img") {
           console.log("uploaded file was an image.");
-          mmedia_tag = $("<div><img " + src_link + " /></div>");
+          mmedia_tag = $("<div><img " + width + " " + height + " " + src_link + " /></div>");
         }
         else if (data.file_type === "audio") {
           console.log("uploaded file was an audio.");
@@ -252,8 +252,8 @@ $(document).ready(function(){
           console.log("uploaded file was a video.");
           var mime_type  = "type=\"video/" + ext + "\"";   // type="video/<extension>"
           mmedia_tag = $(
-            "<div><video " + width + " " + height + " controls><source "
-            + src_link + " " + mime_type + "/>Unsupported video format.</video></div>");
+            "<div><video " + width + " " + height + " controls>"
+            + "<source " + src_link + " " + mime_type + "/>Unsupported video format.</video></div>");
         }
         else if (data.file_type === "other") {
           console.log("uploaded file of type 'other'");
