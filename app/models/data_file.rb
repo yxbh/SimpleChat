@@ -4,7 +4,10 @@ class DataFile < ActiveRecord::Base
     full_path = file.original_filename
     filename  = File.basename(full_path)
     directory = "public/data"
-
+    
+    # create data dir if not exists already.
+    Dir.mkdir directory unless File.exists?(directory)
+    
     # create the file path
     path = File.join(directory, filename)
 
