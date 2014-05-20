@@ -220,7 +220,8 @@ $(document).ready(function(){
       }
       else if (data.type === "file_uploaded") {
         console.log("User uploaded a file.");
-        $("#messages").append($(container).html(data.msg));
+        var file_tag = $("<div><a href=\"" + data.link + "\">Download</a></div>");
+        $("#messages").append($(container).html(data.msg).append(file_tag));
         
         if (data.file_type === "img") {
           console.log("uploaded file was an image.");
@@ -248,10 +249,7 @@ $(document).ready(function(){
           $("#messages").append(vid_tag);
         }
         else if (data.file_type === "other") {
-          console.log("file file file file....");
-          $("#messages").append($(container).html(data.msg));
-          var file_tag = $("<div><a href=\"" + data.link + "\">Download</a></div>");
-          $("#messages").append(file_tag);
+          console.log("uploaded file of type 'other'");
         }
       }      
       
