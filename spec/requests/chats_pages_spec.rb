@@ -17,6 +17,11 @@ describe "Chat page" do
 		it { should have_content('Upload File') }
 		it { should have_link('Sign out') }
 		it { should have_content('Participants') }
+		
+		describe "redirect on visiting directory without room id" do
+			before { get room_path}
+			it { expect(response).to redirect_to(root_path) }
+		end
 	end
 	
 =begin		testing for posting messages
