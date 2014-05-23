@@ -17,9 +17,6 @@ Rails.application.routes.draw do
   match '/create',    to: 'chats#create',           via: 'get'
   match '/room',      to: 'chats#room',             via: 'get'
 
-  #get 'chats/room'
-  #get 'chats/create'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
