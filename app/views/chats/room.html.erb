@@ -56,7 +56,7 @@
   
   <%= form_tag({:controller => "upload", :action => "upload"}, :id=>"upload-form", :multipart => true, :class=>"form-inline") do %>
     <div class="form-group">
-    <label for="upload_file" class="form-control">Upload File :</label>
+    <%= label_tag 'file', 'Upload File:' %>
     <%= file_field 'upload', 'datafile', :id=>"file", :class=>"form-control" %>
     <%= submit_tag "Upload", :id=>"upload-file", :class =>"btn btn-default form-control" %>
 	</div>
