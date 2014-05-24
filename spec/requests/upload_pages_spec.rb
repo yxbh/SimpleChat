@@ -6,7 +6,7 @@ describe "Upload pages" do
 
   describe "Upload", :js => true do
     gotoChatPage()
-    file_path = Rails.root + "spec/fixtures/files/test-upload.txt"
+    file_path = Rails.root.join('spec', 'fixtures', 'files', 'test-upload.txt')
 
     before do
       attach_file "file", file_path
