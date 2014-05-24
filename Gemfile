@@ -19,7 +19,7 @@ group :test do
 	gem 'selenium-webdriver', '2.35.1'
 	gem 'capybara', '2.1.0'
 	gem 'rb-notifu', '0.0.4'
-	gem 'wdm', '0.1.0'
+	gem 'wdm', '0.1.0', platforms: :mingw, require: false
 	gem 'factory_girl_rails', '4.4.1'
 end
 
