@@ -6,9 +6,10 @@ describe "Upload pages" do
 
   describe "Upload", :js => true do
     gotoChatPage()
+	file_path = Rails.root + "spec/fixtures/files/test-upload.txt"
 
     before do
-      fill_in "upload[datafile]", with: "illegal path"
+	  attach_file "file", file_path
       click_button "Upload"
     end
 
