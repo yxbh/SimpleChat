@@ -23,9 +23,8 @@ describe "Chat page" do
       it { expect(response).to redirect_to(root_path) }
     end
   end
-    
-=begin      testing for posting messages
-  describe "Post message" do
+  
+  describe "Post message", :js => true do
     gotoChatPage()
     
     before do
@@ -35,6 +34,5 @@ describe "Chat page" do
     
     it { should have_content('some words') }
   end
-=end
 
 end

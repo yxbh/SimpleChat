@@ -16,7 +16,8 @@ group :development, :test do
 end
 
 group :test do
-	gem 'selenium-webdriver', '2.35.1'
+	gem 'database_cleaner'
+	gem 'selenium-webdriver', '~> 2.38.0'
 	gem 'capybara', '2.1.0'
 	gem 'rb-notifu', '0.0.4'
 	gem 'wdm', '0.1.0', platforms: :mingw, require: false
