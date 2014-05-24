@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 gem 'bootstrap-sass', '3.1.1.1'
 gem 'sprockets', '2.11.0'
 gem 'bcrypt-ruby', '3.1.5'
@@ -18,7 +18,7 @@ end
 group :test do
 	gem 'database_cleaner'
 	gem 'selenium-webdriver', '~> 2.38.0'
-	gem 'capybara', '2.1.0'
+	gem 'capybara', '2.2.1'
 	gem 'rb-notifu', '0.0.4'
 	gem 'wdm', '0.1.0', platforms: :mingw, require: false
 	gem 'factory_girl_rails', '4.4.1'
