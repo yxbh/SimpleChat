@@ -35,6 +35,7 @@ Go to localhost:3000 on your browser.
 At the terminal. Press Ctrl+C until all server process exits.
 ##Test Suite
 The standard Rails test suite and the simplecov gem are used.
+
 Before running the test, make sure you have done a database migrate for the test environment.
 ```
 bundle exec rake db:migrate RAILS_ENV=test
@@ -43,8 +44,13 @@ To run the test suite:
 ```
 bundle exec rake spec
 ```
-The HTML coverage report is generated in the coverage directory. You might need to do Ctrl+C to stop the server completely as the Faye might still be running in another thread. This is also true before you run the test suite. The servers must not be running before you run the test suite or it will complain.
-###
+The HTML coverage report is generated in the coverage directory.
+
+You might need to do Ctrl+C to stop the server completely as the Faye might still be running in another thread. This is also true before you run the test suite. The servers must not be running before you run the test suite or it will complain. It might be necessary to kill the Ruby thread as well.
+On Ubuntu or other similar OS you can do the following:
+```
+pkill ruby
+```
 ##Authors
 * Arun Gimblet
 * Benjamin YanXiang Huang
