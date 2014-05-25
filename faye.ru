@@ -2,7 +2,7 @@ require 'faye'
 
 Faye::WebSocket.load_adapter('thin')
 
-bayeux = Faye::RackAdapter.new(:port => 9292, :mount => '/faye', :timeout => 25)
+bayeux = Faye::RackAdapter.new(:port => 3060, :mount => '/faye', :timeout => 25)
 
 # report handshake
 bayeux.on(:handshake) do |client_id|
