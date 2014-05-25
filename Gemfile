@@ -36,7 +36,7 @@ group :doc do
 end
 
 # JavaScript runtime
-# gem 'therubyracer'
+gem 'therubyracer', platforms: [:darwin, :linux]
 # client
 gem 'thin'
 # faye for sockets
