@@ -178,10 +178,10 @@ $(document).ready(function(){
 
   // load the Faye JS and initiate the client. 
   var host = "http://" + location.host.split(":")[0];
-  $.getScript(host + ":9292/faye.js")
+  $.getScript(host + ":3053/faye.js")
   .done(function( script, textStatus ) {
     console.log("load Faye JS success");
-    client = new Faye.Client(host + ":9292/faye");
+    client = new Faye.Client(host + ":3053/faye");
     client.disable("autodisconnect");
 
     client.on("transport:up", function() {
@@ -354,7 +354,7 @@ $(document).ready(function(){
       //alert("Upload Success!");
       
       // construct the link.
-      file_link = host + ":3000/data/" + filename;
+      file_link = host + ":3052/data/" + filename;
       
       // broadcast the link.
       client.publish(room_path, {
