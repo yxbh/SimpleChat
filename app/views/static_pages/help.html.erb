@@ -1,13 +1,21 @@
 <% provide(:title, 'Help') %>
 
 <h1>Help</h1>
-<div class="well narrow">
-  <ol>
-    <li>Sign up</li>
-    <li>Sign in</li>
-    <li>Enter chat room</li>
-    <li>Chat</li>
-    <li>???</li>
-    <li>Profit</li>
-  </ol>
-</div>
+	<div  id = "help_container" class = "well narrow" >
+		<hr>
+		<h2>Stage 1 <small>- Create an account</small></h2>
+		<p>Creating an account with Simple Chat is simple! (no pun intended).
+		Simply click the link below and enter a few details and you are about ready to start chatting!</p>
+		<%= link_to "Create an account", signin_path %>
+		<hr>
+		<h2>Stage 2 <small>- Starting a chatroom</small></h2>
+		<p>Now, there are two ways to start chatting with your friends:</p>
+		<h4>Option 1:</h4>
+		<p class = "op">Ensure you are logged in first, then click the following link to create a new chatroom. Send your friends the
+		URL to allow them to join the chat room.</p> 
+		<%= link_to "Start Chatting!", create_path %>
+		<h4>Option 2:</h4>
+		<p class = "op">Have a friend create a chatroom and have them share the chatroom URL. Copy and paste the URL into the browser
+		and start chatting!</p>
+		<hr>
+	</div>
