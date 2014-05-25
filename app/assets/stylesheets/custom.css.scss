@@ -208,3 +208,43 @@ dl dd {
 	margin:2px 0;
 	padding:5px 0;
 }
+/* Help_wrapper */
+#help_container{
+	height:auto;
+	overflow:auto;
+	position:relative;
+	margin: 0px auto 0px auto;	
+	 h2{
+		margin-left:10px;
+		display:inline;
+		color:#2E618D;
+		small{
+			font-size:18px;
+			color:#606060;
+		}
+	 }
+	h4{
+		margin-left:30px;
+		color:#428bca;	
+	}
+	p{
+		margin-left: 30px;
+		margin-right:20px;
+	}
+	a{
+		margin-left:200px;
+	}
+	p.op{
+		margin-left:60px;
+		margin-right:20px;		
+	}
+	$hrColor:#D0D0D0  ;
+	hr{
+		color:$hrColor;	/*Need for IE*/
+		background-color:$hrColor;	/*Need for Opera/FireFox */
+		height: 2px;
+		border:none;
+		width:85%;
+		margin-left:5%;
+	}
+}
