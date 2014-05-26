@@ -54,6 +54,10 @@ On Ubuntu or other similar OS you can do the following:
 ```
 pkill ruby
 ```
+## Known Issues
+* JavaScript warnings due to Bootstrap
+* Simplecov not properly recognising coverage of one line
+
 ##Authors
 * Arun Gimblet
 * Benjamin YanXiang Huang
