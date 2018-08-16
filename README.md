@@ -1,13 +1,14 @@
-#SimpleChat
-######University of Western Australia CITS3403 Project (Stage II) 2014
+# SimpleChat
+
+###### University of Western Australia CITS3403 Project (Stage II) 2014
 A simple real time chat client built using Ruby on Rails (Ruby v2 and Rails V4).
 Support user authentication, multiple chat rooms and file upload and sharing.
-##Setup and Run
+## Setup and Run
 Use git clone or download the zip file from the GitHub [repository](https://github.com/yxbh/Uni_2014S1_CITS3403_Projects).
 ```
 git clone https://github.com/yxbh/Uni_2014S1_CITS3403_Projects.git
 ```
-###Run in test mode.
+### Run in test mode.
 In your terminal:
 ```
 bundle install
@@ -16,7 +17,7 @@ rails s --environment test
 ```
 Go to localhost:3052 on your browser.
 
-###Run in development mode.
+### Run in development mode.
 In your terminal:
 ```
 bundle install
@@ -25,7 +26,7 @@ rails s --environment development
 ```
 Go to localhost:3052 on your browser.
 
-###Run in production mode.
+### Run in production mode.
 In your terminal:
 ```
 bundle install
@@ -34,9 +35,9 @@ rails s --environment production
 ```
 Go to localhost:3052 on your browser.
 
-###Exit server.
+### Exit server.
 At the terminal. Press Ctrl+C until all server process exits.
-##Test Suite
+## Test Suite
 The rspec test suite and the simplecov gem are used.
 
 Before running the test, make sure you have done a database migrate for the test environment.
@@ -58,7 +59,7 @@ pkill ruby
 * JavaScript warnings due to Bootstrap
 * Simplecov not properly recognising coverage of one line
 
-##Authors
+## Authors
 * Arun Gimblet
 * Benjamin YanXiang Huang
 * Timothy Lander
